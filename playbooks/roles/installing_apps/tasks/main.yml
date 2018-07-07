@@ -1,0 +1,12 @@
+---
+- name: Show system info
+  debug:
+    msg: "OS distribution: {{ ansible_distribution }}"
+
+- name: Installing applications for Archlinux
+  include_tasks: archlinux.yml
+  when: ansible_distribution == "Archlinux"
+
+- name: Installing applications for Ubuntu
+  include_tasks: ubuntu_1804.yml
+  when: ansible_distribution == "Ubuntu"

@@ -1,0 +1,5 @@
+---
+- name: Configure flake8
+  shell: "cp -r {{ dotfiles_repo_path }}/flake8/HOME/. $HOME"
+  become: yes
+  become_user: "{{ deploy_user }}"

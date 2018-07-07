@@ -1,0 +1,5 @@
+---
+- name: Configure git to use diff-so-fancy
+  shell: "/bin/bash {{ dotfiles_repo_path }}/git/enable_diff_so_fancy.sh"
+  become: yes
+  become_user: "{{ deploy_user }}"

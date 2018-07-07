@@ -1,0 +1,15 @@
+---
+- name: Pull dotfiles from my GitHub
+  git:
+    dest: "{{ dotfiles_repo_path }}"
+    repo: https://github.com/johnliu55tw/dotfiles.git
+
+- name: Configure system
+  include_tasks: "{{ item }}"
+  with_items:
+    - vim.yml
+    - neovim.yml
+    - bash.yml
+    - flake8.yml
+    - git.yml
+    - tmux.yml

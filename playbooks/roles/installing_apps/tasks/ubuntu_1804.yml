@@ -1,0 +1,17 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: Install applications for Ubuntu 18.04
+  apt:
+    name: "{{ apps_ubuntu_1804 }}"
+  become: yes
+
+- name: Install diff-so-fancy
+  get_url:
+    url: https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
+    dest: /usr/local/bin/diff-so-fancy
+    mode: 0755
+  become: yes

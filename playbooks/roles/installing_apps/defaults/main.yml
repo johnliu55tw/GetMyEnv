@@ -1,0 +1,25 @@
+---
+apps_arch:
+  - git
+  - vim
+  - neovim
+  - tmux
+  - flake8
+  - base-devel
+  - python2
+  - python
+  - ipython2
+  - ipython
+  - diff-so-fancy  # Only available in Arch as a package. Manual installatino on other distros is required
+
+apps_ubuntu_1804:
+  - git
+  - vim
+  - neovim
+  - tmux
+  - flake8
+  - build-essential
+  - python
+  - python3
+  - ipython
+  - ipython3

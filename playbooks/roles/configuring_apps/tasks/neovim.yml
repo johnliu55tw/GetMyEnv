@@ -1,0 +1,10 @@
+---
+- name: Copy nvim config directory
+  shell: "cp -rf {{ dotfiles_repo_path }}/nvim/HOME/.config $HOME/" 
+  become: yes
+  become_user: "{{ deploy_user }}"
+
+- name: Run PlugInstall command in nvim to install plugins
+  shell: "nvim -c PlugInstall -c qa"
+  become: yes
+  become_user: "{{ deploy_user }}"
