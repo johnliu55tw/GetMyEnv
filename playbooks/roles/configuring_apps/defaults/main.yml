@@ -1,2 +1,3 @@
 ---
 dotfiles_repo_path: /tmp/dotfiles/
+has_x11: no
