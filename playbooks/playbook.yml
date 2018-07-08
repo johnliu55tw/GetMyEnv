@@ -2,6 +2,7 @@
 - hosts: all
   vars:
     deploy_user: john
+    has_x11: no
   roles:
   - installing_apps
   - configuring_apps

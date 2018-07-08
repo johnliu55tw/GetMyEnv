@@ -18,6 +18,25 @@
   become: yes
   become_user: "{{ deploy_user }}"
 
+- name: Adjust plugin tmux-yank copy command for system without X11
+  when: not has_x11
+  lineinfile:
+    path: "$HOME/.tmux.conf"
+    line: "set -g @override_copy_command 'tee > /dev/null'"
+    insertafter: ".*tmux-yank.*"
+    state: present
+  become: yes
+  become_user: "{{ deploy_user }}"
+
+- name: Adjust plugin tmux-yank copy command for system with X11
+  when: has_x11
+  lineinfile:
+    path: "$HOME/.tmux.conf"
+    line: "set -g @override_copy_command 'tee > /dev/null'"
+    state: absent
+  become: yes
+  become_user: "{{ deploy_user }}"
+
 - name: Install TPM plugins
   shell: "$HOME/.tmux/plugins/tpm/bin/install_plugins"
   become: yes
