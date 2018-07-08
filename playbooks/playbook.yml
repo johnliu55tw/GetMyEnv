@@ -1,10 +1,8 @@
 ---
 - hosts: all
-  vars:
-    deploy_user: john
   roles:
   - role: installing_apps
     become: yes
   - role: configuring_apps
     become: yes
-    become_user: "{{ deploy_user }}"
+    become_user: "{{ env_user }}"

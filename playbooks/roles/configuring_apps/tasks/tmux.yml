@@ -13,7 +13,7 @@
   shell: "cp {{ dotfiles_repo_path }}/tmux/HOME/.tmux.conf $HOME/"
 
 - name: Adjust plugin tmux-yank copy command for system without X11
-  when: not has_x11
+  when: not env_has_x11
   lineinfile:
     path: "$HOME/.tmux.conf"
     line: "set -g @override_copy_command 'tee > /dev/null'"
@@ -21,7 +21,7 @@
     state: present
 
 - name: Adjust plugin tmux-yank copy command for system with X11
-  when: has_x11
+  when: env_has_x11
   lineinfile:
     path: "$HOME/.tmux.conf"
     line: "set -g @override_copy_command 'tee > /dev/null'"
