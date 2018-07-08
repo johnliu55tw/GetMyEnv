@@ -2,9 +2,7 @@
 - name: Upgrade the system
   pacman:
     upgrade: yes
-  become: yes
 
 - name: Install applications for Archlinux
   pacman:
     name: "{{ apps_arch }}"
-  become: yes

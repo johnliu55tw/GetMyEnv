@@ -1,5 +1,3 @@
 ---
 - name: Copy BASH files
   shell: "cp -r {{ dotfiles_repo_path }}/bash/HOME/. $HOME/"
-  become: yes
-  become_user: "{{ deploy_user }}"

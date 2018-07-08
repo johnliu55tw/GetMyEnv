@@ -2,7 +2,9 @@
 - hosts: all
   vars:
     deploy_user: john
-    has_x11: no
   roles:
-  - installing_apps
-  - configuring_apps
+  - role: installing_apps
+    become: yes
+  - role: configuring_apps
+    become: yes
+    become_user: "{{ deploy_user }}"
