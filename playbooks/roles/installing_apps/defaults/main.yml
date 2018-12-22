@@ -16,6 +16,7 @@ apps_arch:
   - ipython
   - diff-so-fancy  # Only available in Arch as a package. Manual installatino on other distros is required
   - python-pipenv  # Only available in Arch as a package. Manual installatino on other distros is required
+  - docker
 
 apps_ubuntu_1804:
   - git

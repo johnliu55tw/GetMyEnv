@@ -1,0 +1,35 @@
+---
+- name: Uninstall old version docker
+  apt:
+    name:
+      - docker
+      - docker-engine
+      - docker.io
+    state: absent
+    purge: yes
+
+- name: Install packages to allow apt to use a repository over HTTPS
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+    update_cache: yes
+    state: present
+
+- name: Add Docker's official GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker's stable repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+
+- name: Install Docker CE
+  apt:
+    name: docker-ce
+    update_cache: yes
+    state: present

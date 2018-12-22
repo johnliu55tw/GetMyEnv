@@ -1,0 +1,21 @@
+---
+- name: Start and enable docker.service
+  become_method: sudo
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Ensure group "docker" exists
+  become_method: sudo
+  group:
+    name: docker
+    state: present
+
+- name: Enable env_user to manage docker without root privilege
+  become_method: sudo
+  user:
+    name: "{{ env_user }}"
+    append: yes
+    groups:
+      - docker
