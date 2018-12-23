@@ -14,6 +14,7 @@ apps_arch:
   - python-virtualenv
   - ipython2
   - ipython
+  - ripgrep  # Only available in Arch as a package. Manual installatino on other distros is required
   - diff-so-fancy  # Only available in Arch as a package. Manual installatino on other distros is required
   - python-pipenv  # Only available in Arch as a package. Manual installatino on other distros is required
   - docker  # Require manual installation on Ubuntu to get the latest version (docker-ce)

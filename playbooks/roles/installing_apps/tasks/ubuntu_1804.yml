@@ -20,3 +20,8 @@
 
 - name: Install Docker CE
   include_tasks: install_docker_ce_ubuntu_1804.yml
+
+- name: Install ripgrep
+  apt:
+    deb: https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb
+    state: present
