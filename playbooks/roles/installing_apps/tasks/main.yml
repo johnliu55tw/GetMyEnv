@@ -13,3 +13,6 @@
 
 - name: Configuring docker
   include_tasks: configure_docker.yml
+
+- name: Installing fzf
+  include_tasks: install_fzf.yml

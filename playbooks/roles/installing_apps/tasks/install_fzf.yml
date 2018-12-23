@@ -1,0 +1,11 @@
+---
+- name: Pull latest fzf from GitHub
+  become_user: "{{ env_user }}"
+  git:
+    dest: "~/.fzf"
+    repo: https://github.com/junegunn/fzf.git
+    depth: 1
+
+- name: Install fzf
+  become_user: "{{ env_user }}"
+  shell: "~/.fzf/install --xdg --key-bindings --completion --no-update-rc --no-zsh --no-fish"
