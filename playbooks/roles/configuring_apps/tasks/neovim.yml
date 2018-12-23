@@ -2,5 +2,5 @@
 - name: Copy nvim config directory
   shell: "cp -rf {{ dotfiles_repo_path }}/nvim/HOME/.config $HOME/" 
 
-- name: Run PlugInstall command in nvim to install plugins
-  shell: "nvim -c PlugInstall -c qa"
+- name: Installing plugins by vim-plug using PlugInstall command
+  shell: "nvim -u $HOME/.config/nvim/init-plug.vim -c PlugInstall -c qa"
