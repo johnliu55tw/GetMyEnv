@@ -16,3 +16,10 @@
 
 - name: Installing fzf
   include_tasks: install_fzf.yml
+
+- name: Installing bash-git-prompt
+  become_user: "{{ env_user }}"
+  git:
+    dest: "~/.bash-git-prompt"
+    repo: https://github.com/magicmonty/bash-git-prompt.git
+    depth: 1
