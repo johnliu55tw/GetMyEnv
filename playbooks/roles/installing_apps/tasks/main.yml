@@ -10,3 +10,6 @@
 - name: Installing applications for Ubuntu
   when: ansible_distribution == "Ubuntu"
   include_tasks: ubuntu_1804.yml
+
+- name: Configuring docker
+  include_tasks: configure_docker.yml

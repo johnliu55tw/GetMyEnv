@@ -13,4 +13,3 @@
     - flake8.yml
     - git.yml
     - tmux.yml
-    - docker.yml
