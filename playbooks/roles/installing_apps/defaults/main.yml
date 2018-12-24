@@ -4,6 +4,7 @@ apps_arch:
   - vim
   - neovim
   - tmux
+  - keychain
   - flake8
   - base-devel
   - python2
@@ -24,6 +25,7 @@ apps_ubuntu_1804:
   - vim
   - neovim
   - tmux
+  - keychain
   - flake8
   - build-essential
   - python
