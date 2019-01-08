@@ -15,6 +15,7 @@ apps_arch:
   - python-virtualenv
   - ipython2
   - ipython
+  - colordiff
   - ripgrep  # Only available in Arch as a package. Manual installatino on other distros is required
   - diff-so-fancy  # Only available in Arch as a package. Manual installatino on other distros is required
   - python-pipenv  # Only available in Arch as a package. Manual installatino on other distros is required
@@ -36,3 +37,4 @@ apps_ubuntu_1804:
   - python3-virtualenv
   - ipython
   - ipython3
+  - colordiff
