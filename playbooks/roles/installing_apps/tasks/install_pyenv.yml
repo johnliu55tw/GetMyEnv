@@ -1,0 +1,46 @@
+---
+- name: Pull latest pyenv from GitHub
+  become_user: "{{ env_user }}"
+  git:
+    dest: "~/.pyenv"
+    repo: https://github.com/pyenv/pyenv.git
+    depth: 1
+
+- name: Install pyenv prerequisites for Ubuntu
+  when: ansible_distribution == "Ubuntu"
+  apt:
+    name:
+      - build-essential
+      - libssl-dev
+      - zlib1g-dev
+      - libbz2-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - wget
+      - curl
+      - llvm
+      - libncurses5-dev
+      - libncursesw5-dev
+      - xz-utils
+      - tk-dev
+      - libffi-dev
+      - liblzma-dev
+      - python-openssl
+      - git
+
+- name: Install pyenv prerequisites for Arch
+  when: ansible_distribution == "Archlinux"
+  pacman:
+    name:
+      - base-devel
+      - openssl
+      - zlib
+      - bzip2
+      - readline
+      - sqlite
+      - wget
+      - curl
+      - llvm
+      - xz
+      - tk
+      - libffi
