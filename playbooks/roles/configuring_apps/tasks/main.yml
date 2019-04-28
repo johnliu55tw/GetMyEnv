@@ -16,6 +16,6 @@
 
 - name: Configure pyenv
   include_tasks: pyenv.yml
-  loop: "{{ query('list', python_versions)|flatten }}"
+  loop: "{{ query('flattened', python_versions) }}"
   loop_control:
     loop_var: python_version
