@@ -5,20 +5,16 @@ apps_arch:
   - neovim
   - tmux
   - keychain
-  - flake8
   - base-devel
   - python2
-  - python2-pip
   - python2-virtualenv
   - python
-  - python-pip
   - python-virtualenv
   - ipython2
   - ipython
   - colordiff
   - ripgrep  # Only available in Arch as a package. Manual installatino on other distros is required
   - diff-so-fancy  # Only available in Arch as a package. Manual installatino on other distros is required
-  - python-pipenv  # Only available in Arch as a package. Manual installatino on other distros is required
   - docker  # Require manual installation on Ubuntu to get the latest version (docker-ce)
 
 apps_ubuntu_1804:
@@ -27,13 +23,10 @@ apps_ubuntu_1804:
   - neovim
   - tmux
   - keychain
-  - flake8
   - build-essential
   - python
-  - python-pip
   - python-virtualenv
   - python3
-  - python3-pip
   - python3-virtualenv
   - ipython
   - ipython3

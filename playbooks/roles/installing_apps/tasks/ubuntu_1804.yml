@@ -13,11 +13,6 @@
     dest: /usr/local/bin/diff-so-fancy
     mode: 0755
 
-- name: Install pipenv
-  pip:
-    name: pipenv
-    executable: pip3
-
 - name: Install Docker CE
   include_tasks: install_docker_ce_ubuntu_1804.yml
 

@@ -13,3 +13,9 @@
     - flake8.yml
     - git.yml
     - tmux.yml
+
+- name: Configure pyenv
+  include_tasks: pyenv.yml
+  loop: "{{ query('list', python_versions)|flatten }}"
+  loop_control:
+    loop_var: python_version
