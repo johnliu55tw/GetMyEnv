@@ -1,6 +1,17 @@
 ---
+- name: Ensure ~/.config/nvim/autoload exists
+  file:
+    path: "$HOME/.config/nvim/autoload"
+    state: directory
+
+- name: Install vim-plug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "$HOME/.config/nvim/autoload/plug.vim"
+    force: yes
+
 - name: Copy nvim config directory
-  shell: "cp -rf {{ dotfiles_repo_path }}/nvim/HOME/.config $HOME/" 
+  shell: "cp -rf {{ dotfiles_repo_path }}/nvim/HOME/.config/nvim $HOME/.config/"
 
 - name: Installing plugins by vim-plug using PlugInstall command
   shell: "nvim -u $HOME/.config/nvim/init-plug.vim -c PlugInstall -c qa"
