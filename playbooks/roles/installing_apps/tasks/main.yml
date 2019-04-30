@@ -26,3 +26,6 @@
 
 - name: Installing pyenv
   include_tasks: install_pyenv.yml
+
+- name: Installing bd
+  include_tasks: install_bd.yml

@@ -1,0 +1,7 @@
+---
+- name: Install vim-plug
+  get_url:
+    url: https://raw.githubusercontent.com/vigneshwaranr/bd/master/bd
+    dest: "$HOME/.local/bin/bd"
+    mode: 0755
+    force: yes
