@@ -1,5 +1,5 @@
 ---
-- name: Install vim-plug
+- name: Install bd
   get_url:
     url: https://raw.githubusercontent.com/vigneshwaranr/bd/master/bd
     dest: "$HOME/.local/bin/bd"
