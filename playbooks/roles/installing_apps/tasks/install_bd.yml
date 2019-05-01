@@ -1,5 +1,6 @@
 ---
 - name: Install bd
+  become_user: "{{ env_user }}"
   get_url:
     url: https://raw.githubusercontent.com/vigneshwaranr/bd/master/bd
     dest: "$HOME/.local/bin/bd"
