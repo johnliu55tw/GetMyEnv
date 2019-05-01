@@ -9,7 +9,8 @@ get me my environment NOW!!
 
 2. Modify [`hosts.yml`](./hosts.yml) for the local or remote machine to be provisioned.
 
-3. `$ ansible-playbook -i hosts.yml playbooks/playbook.yml`
+3. `$ ansible-playbook -i hosts.yml playbooks/playbook.yml`. Added `-K` if you
+are running locally and wish Ansible to prompt for `sudo` password.
 
 4. Have a cup of coffee and enjoy the environment ;)
 
