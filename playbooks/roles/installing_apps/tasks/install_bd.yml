@@ -1,4 +1,11 @@
 ---
+
+- name: Ensure ~/.local/bin/ eixsts
+  become_user: "{{ env_user }}"
+  file:
+    path: "$HOME/.local/bin"
+    state: directory
+
 - name: Install bd
   become_user: "{{ env_user }}"
   get_url:
