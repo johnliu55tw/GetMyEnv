@@ -1,15 +1,6 @@
 ---
-- name: Show system info
-  debug:
-    msg: "OS distribution: {{ ansible_distribution }}"
-
 - name: Installing applications for Archlinux
-  when: ansible_distribution == "Archlinux"
   include_tasks: archlinux.yml
-
-- name: Installing applications for Ubuntu
-  when: ansible_distribution == "Ubuntu"
-  include_tasks: ubuntu_1804.yml
 
 - name: Configuring docker
   include_tasks: configure_docker.yml
