@@ -16,6 +16,7 @@ apps_arch:
   - ripgrep  # Only available in Arch as a package. Manual installatino on other distros is required
   - diff-so-fancy  # Only available in Arch as a package. Manual installatino on other distros is required
   - docker  # Require manual installation on Ubuntu to get the latest version (docker-ce)
+  - entr
 
 apps_ubuntu_1804:
   - git
@@ -31,3 +32,4 @@ apps_ubuntu_1804:
   - ipython
   - ipython3
   - colordiff
+  - entr
