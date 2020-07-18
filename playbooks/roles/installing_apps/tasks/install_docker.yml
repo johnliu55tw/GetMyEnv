@@ -1,4 +1,8 @@
 ---
+- name: Install docker via pacman
+  pacman:
+    name: docker
+
 - name: Start and enable docker.service
   service:
     name: docker

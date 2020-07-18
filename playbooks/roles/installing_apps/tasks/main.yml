@@ -2,8 +2,8 @@
 - name: Installing applications for Archlinux
   include_tasks: archlinux.yml
 
-- name: Configuring docker
-  include_tasks: configure_docker.yml
+- name: Installing docker
+  include_tasks: install_docker.yml
 
 - name: Installing fzf
   include_tasks: install_fzf.yml
