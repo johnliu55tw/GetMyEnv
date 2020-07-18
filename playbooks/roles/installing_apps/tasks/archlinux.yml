@@ -6,3 +6,4 @@
 - name: Install applications for Archlinux
   pacman:
     name: "{{ apps_arch }}"
+    
