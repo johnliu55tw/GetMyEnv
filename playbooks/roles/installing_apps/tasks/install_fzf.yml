@@ -1,19 +1,27 @@
 ---
-- name: Pull latest fzf from GitHub
+- name: Check if fzf was installed not via pacman
+  # In an older version of this playbook, pyenv was installed via git,
+  # not pacman.
   become_user: "{{ env_user }}"
-  git:
-    dest: "~/.fzf"
-    repo: https://github.com/junegunn/fzf.git
-    depth: 1
+  shell: "ls ~/.fzf/"
+  register: fzf_not_via_pacman
+  ignore_errors: yes
+
+- name: Remove fzf which is not installed by pacman
+  become_user: "{{ env_user }}"
+  when: fzf_not_via_pacman is succeeded
+  file:
+    path: "~/.fzf/"
+    state: absent
 
 - name: Install fzf
-  become_user: "{{ env_user }}"
-  shell: "~/.fzf/install --xdg --key-bindings --completion --no-update-rc --no-zsh --no-fish"
+  pacman:
+    name: fzf
 
 - name: Enable fzf
   become_user: "{{ env_user }}"
   copy:
     dest: "~/.bashrc.d/fzf.bash"
     content: |
-      [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
-
+      source /usr/share/fzf/key-bindings.bash
+      source /usr/share/fzf/completion.bash
