@@ -9,11 +9,10 @@
   include_tasks: install_fzf.yml
 
 - name: Installing bash-git-prompt
-  become_user: "{{ env_user }}"
-  git:
-    dest: "~/.bash-git-prompt"
-    repo: https://github.com/magicmonty/bash-git-prompt.git
-    depth: 1
+  include_tasks: install_bash-git-prompt.yml
+
+- name: Installing keychain
+  include_tasks: install_keychain.yml
 
 - name: Installing pyenv
   include_tasks: install_pyenv.yml

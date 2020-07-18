@@ -7,9 +7,9 @@
 - name: Configure system
   include_tasks: "{{ item }}"
   with_items:
+    - bash.yml
     - vim.yml
     - neovim.yml
-    - bash.yml
     - flake8.yml
     - git.yml
     - tmux.yml

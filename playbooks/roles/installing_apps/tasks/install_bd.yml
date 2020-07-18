@@ -13,3 +13,10 @@
     dest: "$HOME/.local/bin/bd"
     mode: 0755
     force: yes
+
+- name: Enable bd
+  become_user: "{{ env_user }}"
+  copy:
+    dest: "~/.bashrc.d/bd.bash"
+    content: |
+      alias bd='. bd -si'

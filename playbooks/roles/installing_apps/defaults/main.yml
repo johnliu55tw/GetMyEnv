@@ -4,7 +4,6 @@ apps_arch:
   - vim
   - neovim
   - tmux
-  - keychain
   - base-devel
   - python2
   - python2-virtualenv

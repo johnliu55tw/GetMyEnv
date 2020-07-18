@@ -22,3 +22,12 @@
       - openssl
       - zlib
       - xz
+
+- name: Enable pyenv
+  become_user: "{{ env_user }}"
+  copy:
+    dest: "~/.bashrc.d/pyenv.bash"
+    content: |
+      if command -v pyenv 1>/dev/null 2>&1; then
+          eval "$(pyenv init -)"
+      fi

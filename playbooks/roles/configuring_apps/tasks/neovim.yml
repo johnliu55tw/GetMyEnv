@@ -15,3 +15,9 @@
 
 - name: Installing plugins by vim-plug using PlugInstall command
   shell: "nvim -u $HOME/.config/nvim/init-plug.vim -c PlugInstall -c qa"
+
+- name: export EDITOR=nvim
+  copy:
+    dest: "~/.bashrc.d/nvim.bash"
+    content: |
+      export EDITOR=nvim
