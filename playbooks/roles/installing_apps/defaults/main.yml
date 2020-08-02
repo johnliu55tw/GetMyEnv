@@ -15,3 +15,4 @@ apps_arch:
   - ripgrep  # Only available in Arch as a package. Manual installatino on other distros is required
   - diff-so-fancy  # Only available in Arch as a package. Manual installatino on other distros is required
   - entr
+  - cppcheck
