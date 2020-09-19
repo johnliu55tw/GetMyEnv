@@ -16,3 +16,6 @@ apps_arch:
   - diff-so-fancy  # Only available in Arch as a package. Manual installatino on other distros is required
   - entr
   - cppcheck
+  - gdb
+  - valgrind
+  - doxygen
