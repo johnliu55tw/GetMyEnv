@@ -19,3 +19,4 @@ apps_arch:
   - gdb
   - valgrind
   - doxygen
+  - eslint
