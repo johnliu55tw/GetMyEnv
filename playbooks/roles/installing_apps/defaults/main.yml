@@ -3,6 +3,7 @@ apps_arch:
   - git
   - vim
   - neovim
+  - python-pynvim  # Neovim Python support
   - tmux
   - base-devel
   - python2
