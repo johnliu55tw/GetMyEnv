@@ -10,6 +10,7 @@ apps_arch:
   - python2-virtualenv
   - python
   - python-virtualenv
+  - python-language-server
   - ipython2
   - ipython
   - colordiff
