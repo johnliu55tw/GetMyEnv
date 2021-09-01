@@ -10,8 +10,7 @@ apps_arch:
   - python2-virtualenv
   - python
   - python-virtualenv
-  - python-language-server
-  - ipython2
+  - jedi-language-server
   - ipython
   - colordiff
   - ripgrep  # Only available in Arch as a package. Manual installatino on other distros is required
@@ -22,3 +21,5 @@ apps_arch:
   - valgrind
   - doxygen
   - eslint
+  - go
+  - go-tools
