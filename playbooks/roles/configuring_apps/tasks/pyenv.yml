@@ -23,7 +23,6 @@
     - ipython
     - flake8
     - virtualenv
-    - pipenv
     - requests
     - flask
   loop_control:
