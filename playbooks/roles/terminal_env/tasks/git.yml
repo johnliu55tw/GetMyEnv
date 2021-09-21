@@ -1,0 +1,27 @@
+---
+- name: Install git
+  become: yes
+  community.general.zypper:
+    name:
+      - git
+    state: present
+
+- name: Git clone diff-so-fancy
+  become_user: "{{ env_user }}"
+  ansible.builtin.git:
+    update: yes
+    repo: "https://github.com/so-fancy/diff-so-fancy.git"
+    dest: "~/.local/share/diff-so-fancy"
+
+- name: Link diff-so-fancy executable
+  become_user: "{{ env_user }}"
+  ansible.builtin.file:
+    state: link
+    src: "~/.local/share/diff-so-fancy/diff-so-fancy"
+    path: "~/.local/bin/diff-so-fancy"
+
+- name: Copy gitconfig
+  become_user: "{{ env_user }}"
+  ansible.builtin.copy:
+    src: "git/.gitconfig"
+    dest: "~/.gitconfig"

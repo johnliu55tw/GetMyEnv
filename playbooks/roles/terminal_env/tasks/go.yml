@@ -1,0 +1,8 @@
+---
+- name: Install Go
+  become: yes
+  community.general.zypper:
+    name: go
+    state: present
+
+# TODO: goenv

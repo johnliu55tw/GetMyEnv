@@ -1,0 +1,102 @@
+---
+- name: Ensure local bin folder exists
+  become_user: "{{ env_user }}"
+  ansible.builtin.file:
+    path: "~/.local/bin"
+    state: directory
+
+- name: Ensure bashrc.d folder exists
+  become_user: "{{ env_user }}"
+  ansible.builtin.file:
+    path: "~/.bashrc.d"
+    state: directory
+
+- name: Install shell utilities
+  become: yes
+  community.general.zypper:
+    state: present
+    name:
+    - ripgrep
+    - colordiff
+    - entr
+    - bash-completion
+    - bash-git-prompt
+    - keychain
+    - fzf
+    - fzf-bash-completion
+    - fzf-tmux
+
+- name: Install bd
+  become_user: "{{ env_user }}"
+  ansible.builtin.get_url:
+    url: "https://raw.github.com/vigneshwaranr/bd/master/bd"
+    dest: "~/.local/bin/bd"
+    mode: 0755
+    force: yes
+
+- name: Install bd completion
+  become_user: "{{ env_user }}"
+  ansible.builtin.get_url:
+    url: "https://raw.github.com/vigneshwaranr/bd/master/bash_completion.d/bd"
+    dest: "~/.bashrc.d/bd_completion.bash"
+    force: yes
+
+- name: Copy .bashrc
+  become_user: "{{ env_user }}"
+  ansible.builtin.copy:
+    src: "bash/.bashrc"
+    dest: "~/.bashrc"
+
+- name: Copy .bashrc.d
+  become_user: "{{ env_user }}"
+  ansible.builtin.copy:
+    src: "bash/.bashrc.d/"
+    dest: "~/.bashrc.d/"
+
+- name: Install tmux and xsel (for tmux-yank)
+  become: yes
+  community.general.zypper:
+    name:
+    - tmux
+    - xsel
+    state: present
+
+- name: Ensure the directory for TPM exists
+  become_user: "{{ env_user }}"
+  ansible.builtin.file:
+    path: "~/.tmux/plugins"
+    state: directory
+
+- name: Install TPM
+  become_user: "{{ env_user }}"
+  ansible.builtin.git:
+    update: yes
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: "~/.tmux/plugins/tpm"
+
+- name: Copy tmux config file
+  become_user: "{{ env_user }}"
+  ansible.builtin.copy:
+    src: "tmux/.tmux.conf"
+    dest: "~/.tmux.conf"
+
+- name: Adjust plugin tmux-yank copy command for system without X11
+  become_user: "{{ env_user }}"
+  when: not env_has_x11
+  ansible.builtin.lineinfile:
+    path: "~/.tmux.conf"
+    line: "set -g @override_copy_command 'tee > /dev/null'"
+    insertafter: ".*tmux-yank.*"
+    state: present
+
+- name: Adjust plugin tmux-yank copy command for system with X11
+  become_user: "{{ env_user }}"
+  when: env_has_x11
+  ansible.builtin.lineinfile:
+    path: "~/.tmux.conf"
+    line: "set -g @override_copy_command 'tee > /dev/null'"
+    state: absent
+
+- name: Install TPM plugins
+  become_user: "{{ env_user }}"
+  ansible.builtin.shell: "~/.tmux/plugins/tpm/bin/install_plugins"
