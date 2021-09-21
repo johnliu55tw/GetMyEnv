@@ -8,3 +8,4 @@
     - vim.yml
     - nvim.yml
     - git.yml
+    - kubernetes.yml

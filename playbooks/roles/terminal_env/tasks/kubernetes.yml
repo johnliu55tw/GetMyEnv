@@ -1,0 +1,13 @@
+---
+# TODO: Customizable kubectl version
+- name: Install kubectl
+  become_user: "{{ env_user }}"
+  ansible.builtin.get_url:
+    url: "https://dl.k8s.io/release/v1.22.2/bin/linux/amd64/kubectl"
+    dest: "~/.local/bin/kubectl"
+    mode: 0755
+    force: yes
+
+- name: Create kubectl bash completion script to source
+  become_user: "{{ env_user }}"
+  shell: "~/.local/bin/kubectl completion bash > ~/.bashrc.d/kubectl_completion.bash"
