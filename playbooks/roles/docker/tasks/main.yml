@@ -1,0 +1,23 @@
+---
+- name: Install docker
+  become: yes
+  community.general.zypper:
+    state: present
+    name:
+    - docker
+    - python3-docker-compose
+
+- name: Add env user to docker group
+  become: yes
+  ansible.builtin.user:
+    name: "{{ env_user }}"
+    append: yes
+    groups:
+    - docker
+
+- name: Start and enable docker.service
+  become: yes
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: yes

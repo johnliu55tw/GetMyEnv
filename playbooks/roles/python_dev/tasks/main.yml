@@ -1,0 +1,38 @@
+---
+- name: Install pyenv
+  become: yes
+  community.general.zypper:
+    name:
+    - pyenv
+    - pyenv-bash-completion
+    state: present
+
+- name: Install pyenv build dependencies
+  become: yes
+  community.general.zypper:
+    name:
+    - gcc
+    - automake
+    - bzip2
+    - libbz2-devel
+    - xz
+    - xz-devel
+    - openssl-devel
+    - ncurses-devel
+    - readline-devel
+    - zlib-devel
+    - tk-devel
+    - libffi-devel
+    - sqlite3-devel
+
+- name: Enable pyenv for env user
+  become_user: "{{ env_user }}"
+  ansible.builtin.copy:
+    src: "pyenv.bash"
+    dest: "~/.bashrc.d/pyenv.bash"
+
+- name: Install specified Python version via pyenv
+  include_tasks: install_pyenv_python.yml
+  loop: "{{ query('flattened', python_versions) }}"
+  loop_control:
+    loop_var: python_version
