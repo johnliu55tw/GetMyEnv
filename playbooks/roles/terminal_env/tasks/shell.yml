@@ -25,6 +25,7 @@
     - fzf
     - fzf-bash-completion
     - fzf-tmux
+    - fd
 
 - name: Install bd
   become_user: "{{ env_user }}"
