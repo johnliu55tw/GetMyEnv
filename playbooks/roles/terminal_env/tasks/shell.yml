@@ -54,12 +54,27 @@
     src: "bash/.bashrc.d/"
     dest: "~/.bashrc.d/"
 
-- name: Install tmux and xsel (for tmux-yank)
+- name: Install tmux
   become: yes
   community.general.zypper:
     name:
     - tmux
+    state: present
+
+- name: Install xsel (for tmux-yank) if system has X11
+  become: yes
+  when: env_has_x11
+  community.general.zypper:
+    name:
     - xsel
+    state: present
+
+- name: Install wl-clipboard (for tmux-yank) if system has Wayland
+  become: yes
+  when: env_has_wayland
+  community.general.zypper:
+    name:
+    - wl-clipboard
     state: present
 
 - name: Ensure the directory for TPM exists
@@ -81,9 +96,9 @@
     src: "tmux/.tmux.conf"
     dest: "~/.tmux.conf"
 
-- name: Adjust plugin tmux-yank copy command for system without X11
+- name: Adjust plugin tmux-yank copy command for system without graphical interface
   become_user: "{{ env_user }}"
-  when: not env_has_x11
+  when: not env_has_x11 and not env_has_wayland
   ansible.builtin.lineinfile:
     path: "~/.tmux.conf"
     line: "set -g @override_copy_command 'tee > /dev/null'"
@@ -92,7 +107,7 @@
 
 - name: Adjust plugin tmux-yank copy command for system with X11
   become_user: "{{ env_user }}"
-  when: env_has_x11
+  when: env_has_x11 or env_has_wayland
   ansible.builtin.lineinfile:
     path: "~/.tmux.conf"
     line: "set -g @override_copy_command 'tee > /dev/null'"

@@ -18,6 +18,7 @@ are running locally and wish Ansible to prompt for `sudo` password.
 
 * **`env_user`**: User-specific configurations will be installed to this user's home directory.
 * **`env_has_x11`**: Whether the system has X11 enabled. This could affect several configurations.
+* **`env_has_wayland`**: Whether the system has Wayland enabled. This could affect several configurations.
 * **`python_versions`**: Required Python versions to be installed by `pyenv`.
   Default is `2.7.15` and `3.6.8`.
 
