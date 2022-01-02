@@ -26,5 +26,5 @@
     src: "nvim/"
     dest: "~/.config/nvim/"
 
-- name: Installing plugins by vim-plug using PlugInstall command
-  shell: "nvim -u $HOME/.config/nvim/init-plug.vim -c PlugInstall -c qa"
+- name: Installing plugins by vim-plug
+  shell: "nvim -u $HOME/.config/nvim/init-plug.vim -c PlugClean! -c PlugInstall -c qa"

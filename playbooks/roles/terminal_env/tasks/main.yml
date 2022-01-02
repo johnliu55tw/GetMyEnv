@@ -5,6 +5,5 @@
   loop:
     - shell.yml
     - vim.yml
-    - nvim.yml
     - git.yml
     - kubernetes.yml
