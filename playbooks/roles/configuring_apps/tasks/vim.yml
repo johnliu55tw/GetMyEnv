@@ -1,3 +1,0 @@
----
-- name: Copy .vimrc to HOME/
-  shell: "cp {{ dotfiles_repo_path }}/vim/HOME/.vimrc $HOME/"

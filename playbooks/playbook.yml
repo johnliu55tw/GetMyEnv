@@ -1,8 +1,0 @@
----
-- hosts: all
-  roles:
-  - role: installing_apps
-    become: yes
-  - role: configuring_apps
-    become: yes
-    become_user: "{{ env_user }}"

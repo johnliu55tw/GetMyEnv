@@ -1,3 +1,0 @@
----
-- name: Copy BASH files
-  shell: "cp -r {{ dotfiles_repo_path }}/bash/HOME/. $HOME/"

@@ -1,6 +1,0 @@
----
-dotfiles_repo_path: /tmp/dotfiles/
-env_has_x11: no
-python_versions:
-  - 3.6.8
-  - 2.7.15

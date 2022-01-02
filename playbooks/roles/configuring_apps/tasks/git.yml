@@ -1,9 +1,0 @@
----
-- name: Enable git bash completion
-  copy:
-    dest: "~/.bashrc.d/git-completion.bash"
-    content: |
-      source /usr/share/git/completion/git-completion.bash
-
-- name: Configure git to use diff-so-fancy
-  shell: "cp -f {{ dotfiles_repo_path }}/git/HOME/.gitconfig $HOME/"
