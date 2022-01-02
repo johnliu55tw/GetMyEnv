@@ -1,0 +1,18 @@
+---
+- name: Install Go
+  become: yes
+  community.general.zypper:
+    name: go
+    state: present
+
+- name: Install gopls
+  become_user: "{{ env_user }}"
+  shell: "go install golang.org/x/tools/gopls@latest"
+
+- name: Install staticcheck
+  become_user: "{{ env_user }}"
+  shell: "go install honnef.co/go/tools/cmd/staticcheck@latest"
+
+- name: Install goimports
+  become_user: "{{ env_user }}"
+  shell: "go install golang.org/x/tools/cmd/goimports@latest"
